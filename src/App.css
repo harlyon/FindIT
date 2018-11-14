@@ -146,7 +146,7 @@ p {
 }
 
 .btn {
-  background: transparent;
+  background: transparent !important;
   border: 2px solid white !important;
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -159,13 +159,13 @@ p {
 
 .btn-w {
   border: 2px solid #000 !important;
-  background: transparent;
-  color: #000;
+  background: transparent !important;
+  color: #000 !important;
 }
 
 .btn:hover, .btn-w:hover {
-  background: #000;
-  color: #efeff4;
+  background: #000 !important;
+  color: #efeff4 !important;
 }
 
 
