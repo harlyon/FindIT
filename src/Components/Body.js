@@ -4,49 +4,54 @@ import Search from './Search';
 
 class Body extends Component {
 
-    state = {
-        venues: [],
-        latlong: ""
+
+  state = {
+        venues: []
+    }
+
+    handleSubmit(query) {
+      this.getVenues(query);
     }
 
       componentDidMount() {
-        this.getVenues();
-        this.locationSearch();
+        this.getVenues('pubs');
       }
 
-      locationSearch = () => {
+      locationSearch = (callback) => {
         navigator.geolocation.getCurrentPosition(res => {
-            console.log(res.coords.latitude+","+res.coords.longitude);
-        this.setState({ latlong: res.coords.latitude+","+res.coords.longitude });
-        }, ()=>{
-            this.getVenues("restaurants")
+        callback({ latlong: res.coords.latitude+","+res.coords.longitude });
         });
 
     };
 
-      getVenues= () => {
+      getVenues= (query) => {
+
+        let setVenueState = this.setState.bind(this);
+
           const venuesEndpoint = 'https://api.foursquare.com/v2/venues/explore?';
+
+          this.locationSearch(function (latlong) {
+
           const params = {
           client_id: "YQEAJZPPQB3HKQ0C5OOAB42JWCQ2IEINJVIASJORJCUB2MCQ",
           client_secret: "F2RLZSK01PMRV21PZKU2GRLMT44G1CQVRQEGTV53ONF4FFFS",
           limit: 10,
+          query: query,
           v: '20181114',
-          ll: '-26.203159,28.0471622'
+          ll: latlong
         };
        axios(venuesEndpoint + new URLSearchParams(params), {
           method: 'GET'
         }).then(res => {
-          this.setState({venues: res.data.response.groups[0].items});
-          console.log(res.data.response.groups[0].items)
+          setVenueState({venues: res.response.groups[0].items});
         });
+
+      });
+
       }
 
 
     render() {
-        // const venueList = this.state.venues.map(item =>
-        //     <li key={item.venue.id}>{item.venue.name}</li>
-        // );
-
         return (
             <div>
                  <header>
@@ -56,34 +61,41 @@ class Body extends Component {
           </div>
         </header>
         <section className="content">
-           <Search />
+           <Search onSubmit={(value)=>this.handleSubmit(value)}  />
             <br />
           {/* <h3>Search Results Section</h3> */}
+          {
+            this.state.venues && this.state.venues.map((item) => {
+              return (
+                <section className="jobguru-job-tab-area section_70">
+                <div className="row-fluid">
+                <div className="tab-content" id="pills-tabContent">
+                            <div className="tab-pane fade show active" id="pills-companies" role="tabpanel" aria-labelledby="pills-companies-tab">
+                               <div className="top-company-tab">
+                                  <ul>
+                                     <li>
+                                        <div className="top-company-list">
+                                           <div className="company-list-details">
+                                              <h3><a href="/">{item.venue.name}</a></h3>
+                                              <p className="company-state"><i className="fa fa-map-marker"></i> Chicago, Michigan</p>
+                                              <p className="open-icon"><i className="fa fa-briefcase"></i>32 open position</p>
+                                              <p className="varify"><i className="fa fa-check"></i>Verified</p>
+                                              <p className="rating-company">4.9</p>
+                                           </div>
+                                           <div className="company-list-btn">
+                                              <a href="/" className="jobguru-btn">view profile</a>
+                                           </div>
+                                        </div>
+                                     </li>
+                                     </ul>
+                                     </div></div></div>
+                      </div>
+                      </section>
+              )
+            })
+          }
 
-        <section class="jobguru-job-tab-area section_70">
-         <div class="row-fluid">
-         <div class="tab-content" id="pills-tabContent">
-                     <div class="tab-pane fade show active" id="pills-companies" role="tabpanel" aria-labelledby="pills-companies-tab">
-                        <div class="top-company-tab">
-                           <ul>
-                              <li>
-                                 <div class="top-company-list">
-                                    <div class="company-list-details">
-                                       <h3><a href="/">jamulai - consulting & finance Co.</a></h3>
-                                       <p class="company-state"><i class="fa fa-map-marker"></i> Chicago, Michigan</p>
-                                       <p class="open-icon"><i class="fa fa-briefcase"></i>32 open position</p>
-                                       <p class="varify"><i class="fa fa-check"></i>Verified</p>
-                                       <p class="rating-company">4.9</p>
-                                    </div>
-                                    <div class="company-list-btn">
-                                       <a href="/" class="jobguru-btn">view profile</a>
-                                    </div>
-                                 </div>
-                              </li>
-                              </ul>
-                              </div></div></div>
-               </div>
-               </section>
+
         </section>
             </div>
         );

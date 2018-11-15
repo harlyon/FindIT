@@ -118,7 +118,7 @@
 body {
   font-size: 100%;
   font-family: 'Questrial', sans-serif;
-  overflow: hidden;
+  background-color: #f4f5f0;
 }
 
 h1, p {
@@ -246,6 +246,7 @@ ul, ol {
   padding-top: 3px;
 }
 
+
 .top-company-list .company-list-details>h3 {
   font-size: 18px;
   text-transform: capitalize;
@@ -307,7 +308,7 @@ img {
 
 .jobguru-btn {
   display: inline-block;
-  padding: 10px 30px;
+  padding: 5px 5px;
   text-transform: capitalize;
   color: #111;
   font-weight: 500;
