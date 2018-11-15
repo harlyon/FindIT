@@ -178,3 +178,141 @@ p {
     font-size: 60px;
   }
 }
+
+
+
+.section_70 {
+  padding: 10px 0;
+}
+
+.jobguru-job-tab-area .tab-content {
+  margin-top: 30px;
+}
+
+.top-company-tag {
+  display: block;
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+}
+
+.jobguru-job-tab-area .tab-content li, .sidebar-list-single {
+  display: block;
+  margin-bottom: 15px;
+  background: #fff none repeat scroll 0 0;
+  border: 2px solid #eee;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  padding: 30px;
+  border-radius: 4px;
+}
+
+.top-company-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 0;
+  top: 0;
+}
+
+.top-company-list .company-list-logo {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  max-width: 120px;
+  margin-right: 25px;
+  position: relative;
+  top: 3px;
+}
+
+.top-company-list .company-list-details {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding-top: 3px;
+}
+
+.top-company-list .company-list-details {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding-top: 3px;
+}
+
+.top-company-list .company-list-details>h3 {
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #202020;
+}
+
+.top-company-list .company-list-details>h3>a {
+  color: #202020;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.company-list-details p {
+  display: inline-block;
+  margin-right: 10px;
+  color: #000;
+}
+
+.company-list-details p i {
+  margin-right: 7px;
+}
+
+.company-list-details p {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.open-icon i {
+  color: #ef8c45;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.rating-company {
+  background: #febe42 none repeat scroll 0 0;
+  line-height: normal;
+  padding: 0 6px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.company-list-btn a.jobguru-btn {
+  background: transparent none repeat scroll 0 0;
+  color: #111;
+  border: 1px solid #25AD60;
+}
+
+.jobguru-btn {
+  display: inline-block;
+  padding: 10px 30px;
+  text-transform: capitalize;
+  color: #111;
+  font-weight: 500;
+  background: transparent;
+  border-radius: 4px;
+  border: 1px solid #25AD60;
+}
+

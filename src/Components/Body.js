@@ -1,8 +1,52 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Search from './Search';
 
 class Body extends Component {
+
+    state = {
+        venues: [],
+        latlong: ""
+    }
+
+      componentDidMount() {
+        this.getVenues();
+        this.locationSearch();
+      }
+
+      locationSearch = () => {
+        navigator.geolocation.getCurrentPosition(res => {
+            console.log(res.coords.latitude+","+res.coords.longitude);
+        this.setState({ latlong: res.coords.latitude+","+res.coords.longitude });
+        }, ()=>{
+            this.getVenues("restaurants")
+        });
+
+    };
+
+      getVenues= () => {
+          const venuesEndpoint = 'https://api.foursquare.com/v2/venues/explore?';
+          const params = {
+          client_id: "YQEAJZPPQB3HKQ0C5OOAB42JWCQ2IEINJVIASJORJCUB2MCQ",
+          client_secret: "F2RLZSK01PMRV21PZKU2GRLMT44G1CQVRQEGTV53ONF4FFFS",
+          limit: 10,
+          v: '20181114',
+          ll: '-26.203159,28.0471622'
+        };
+       axios(venuesEndpoint + new URLSearchParams(params), {
+          method: 'GET'
+        }).then(res => {
+          this.setState({venues: res.data.response.groups[0].items});
+          console.log(res.data.response.groups[0].items)
+        });
+      }
+
+
     render() {
+        // const venueList = this.state.venues.map(item =>
+        //     <li key={item.venue.id}>{item.venue.name}</li>
+        // );
+
         return (
             <div>
                  <header>
@@ -14,12 +58,32 @@ class Body extends Component {
         <section className="content">
            <Search />
             <br />
-          <h3>Search Results Section</h3>
-          {/* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam vitae officiis distinctio libero deleniti dolorem quae vero nemo modi cupiditate delectus quo iure pariatur nulla doloremque odio  minima beatae totam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam itaque nemo cupiditate commodi velit praesentium perspiciatis nesciunt quas eveniet alias porro veritatis sit cum est necessitatibus possimus illum qui recusandae optio vel illo amet unde quidem perferendis consequatur officiis provident ex impedit repellat fuga enim eum a voluptatibus sequi voluptas soluta voluptatem corrupti minus accusamus ea accusantium laboriosam?</p>
-          <img /><img src="http://placehold.it/500x500&text=Image 2" className="fr" height={250} width={250} /><p>Eum sapiente architecto natus ducimus a placeat expedita dolore debitis amet omnis excepturi pariatur libero similique nobis neque sit perferendis mollitia quibusdam corporis atque illo. Excepturi repellendus architecto voluptates numquam cum tempora natus eligendi itaque labore provident deserunt incidunt commodi iste sint rem non et sapiente nesciunt debitis sit eius ad necessitatibus sequi totam illum doloremque officia similique est minus dignissimos distinctio placeat ipsa aut illo aliquid beatae iure!</p>
-          <p>Repellendus cupiditate voluptatibus eius sequi id corrupti tempore consectetur explicabo deleniti voluptate distinctio quae accusamus ipsum placeat tenetur dolorem nesciunt? Earum cum dicta libero quia qui culpa fuga nulla adipisci natus nesciunt! Impedit ut hic quisquam quos id. Dolorum eos assumenda ducimus illum quisquam doloribus culpa nisi ab amet quo quibusdam ipsa inventore vitae iste mollitia animi odio reiciendis cum non autem ea nihil nobis laborum harum recusandae error rerum facere asperiores officia cupiditate eveniet enim distinctio ex debitis nostrum obcaecati omnis. Aut ex recusandae sapiente saepe deserunt omnis quasi consequuntur excepturi atque sunt distinctio repellendus ipsam itaque explicabo sint tempora necessitatibus nulla amet veritatis mollitia id adipisci facere quisquam animi quaerat commodi ipsum modi eligendi vel maiores voluptatem dolores ab asperiores.</p>
-          <img src="http://placehold.it/500x500&text=Image 2" className="fl" height={250} width={250} /><p>Veniam tempora impedit sunt excepturi nisi expedita corporis voluptatum quod eum dolores cupiditate quo odit iure doloribus corrupti molestias minus nihil temporibus accusamus ex. Cumque pariatur deleniti ipsam ea cum asperiores non suscipit natus. Molestias enim optio perferendis voluptatibus suscipit laborum officia cupiditate similique illum reprehenderit porro natus soluta modi facilis eligendi illo aspernatur nemo fugit sequi facere a quo iure eaque rem omnis et voluptatem quibusdam excepturi nihil. Commodi incidunt quos voluptatum sunt explicabo nobis perferendis vel iusto excepturi cupiditate blanditiis magni placeat autem dignissimos dolor maxime soluta qui voluptate esse obcaecati in tempora est molestias harum adipisci ex deleniti nesciunt odio aspernatur facilis provident laborum eum veniam quis sapiente expedita corporis possimus aut recusandae voluptas nihil a.</p>
-          <p>Necessitatibus libero officia quaerat earum at ullam itaque dolorum. Eligendi illo culpa non quas sit commodi autem assumenda necessitatibus hic deserunt error quam reiciendis consequatur odio quo nostrum nam odit explicabo praesentium dolorum repellat ipsum placeat doloremque neque fugiat sapiente temporibus ad quis provident vitae maiores magnam numquam magni cum impedit dolorem animi voluptas qui deleniti sint. Obcaecati deserunt distinctio sapiente voluptate illo recusandae ad quod tenetur facere doloribus at perspiciatis beatae provident facilis reprehenderit dolorum ut aut dolor temporibus aperiam sunt quae vero modi magnam possimus sequi omnis aliquam. Rerum culpa vel voluptatem nihil aperiam temporibus mollitia odit earum quos rem placeat deleniti illum ea repellendus quisquam odio reprehenderit maxime provident quasi aliquam magnam autem reiciendis est dolorum similique facilis possimus adipisci modi quibusdam ipsam! Quia esse quae vero assumenda voluptatem!</p> */}
+          {/* <h3>Search Results Section</h3> */}
+
+        <section class="jobguru-job-tab-area section_70">
+         <div class="row-fluid">
+         <div class="tab-content" id="pills-tabContent">
+                     <div class="tab-pane fade show active" id="pills-companies" role="tabpanel" aria-labelledby="pills-companies-tab">
+                        <div class="top-company-tab">
+                           <ul>
+                              <li>
+                                 <div class="top-company-list">
+                                    <div class="company-list-details">
+                                       <h3><a href="/">jamulai - consulting & finance Co.</a></h3>
+                                       <p class="company-state"><i class="fa fa-map-marker"></i> Chicago, Michigan</p>
+                                       <p class="open-icon"><i class="fa fa-briefcase"></i>32 open position</p>
+                                       <p class="varify"><i class="fa fa-check"></i>Verified</p>
+                                       <p class="rating-company">4.9</p>
+                                    </div>
+                                    <div class="company-list-btn">
+                                       <a href="/" class="jobguru-btn">view profile</a>
+                                    </div>
+                                 </div>
+                              </li>
+                              </ul>
+                              </div></div></div>
+               </div>
+               </section>
         </section>
             </div>
         );
