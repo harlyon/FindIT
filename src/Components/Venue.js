@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import Search from './Search'
 import VenueList from './VenueList'
-
+import Map from './Map'
 class Venue extends Component {
 
   constructor() {
@@ -40,7 +40,7 @@ class Venue extends Component {
       const params = {
         client_id: "YQEAJZPPQB3HKQ0C5OOAB42JWCQ2IEINJVIASJORJCUB2MCQ",
         client_secret: "F2RLZSK01PMRV21PZKU2GRLMT44G1CQVRQEGTV53ONF4FFFS",
-        limit: 10,
+        limit: 15,
         query: query,
         v: '20130619',
         ll: latlong
@@ -49,7 +49,7 @@ class Venue extends Component {
       fetch(venuesEndpoint + new URLSearchParams(params), {
         method: 'GET'
       }).then(response => response.json()).then(response => {
-        setVenueState({venues: response.response.groups[0].items});
+        setVenueState({venues: response.response.groups[0].items,});
       });
 
     });
@@ -57,7 +57,7 @@ class Venue extends Component {
   }
 
   render() {
-      console.log(this.state.venues)
+      // console.log(this.state.venues)
 
     var venueList = this.state.venues.map((item, i) =>
       <VenueList key={i} item={item}/> //Create a new "name attribute"
@@ -67,10 +67,9 @@ class Venue extends Component {
       <div>
            <header>
           <div className="hero">
-           <br /><br /><br />
-            <h1>Graph Section</h1>
+            <Map  />
           </div>
-        </header><br />
+        </header>
         <section className="content sect">
         <Search onSubmit={(value)=>this.handleSubmit(value)}/>
         <br />
