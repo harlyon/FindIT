@@ -50,6 +50,7 @@ class Venue extends Component {
         method: 'GET'
       }).then(response => response.json()).then(response => {
         setVenueState({venues: response.response.groups[0].items,});
+        console.log(response)
       });
 
     });

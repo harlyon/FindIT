@@ -118,7 +118,6 @@
 body {
   font-size: 100%;
   font-family: 'Questrial', sans-serif;
-  background-color: #644956;
 }
 
 h1, p {
@@ -158,9 +157,9 @@ p {
 }
 
 .btn-w {
-  border: 2px solid #fff !important;
+  border: 2px solid #644956 !important;
   background: transparent !important;
-  color: #fff !important;
+  color: #000 !important;
 }
 
 .btn:hover, .btn-w:hover {
@@ -201,7 +200,7 @@ ul, ol {
 .jobguru-job-tab-area .tab-content li, .sidebar-list-single {
   display: block;
   margin-bottom: 15px;
-  background: #644956 none repeat scroll 0 0;
+  background: #fff none repeat scroll 0 0;
   border: 2px solid #eee;
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
@@ -256,7 +255,7 @@ ul, ol {
 }
 
 .top-company-list .company-list-details>h3>a {
-  color: #fff;
+  color: #644956;
   font-weight: bold;
 }
 
@@ -268,7 +267,7 @@ img {
 .company-list-details p {
   display: inline-block;
   margin-right: 10px;
-  color: #fff;
+  color: #644956;
 }
 
 .company-list-details p i {
@@ -298,13 +297,13 @@ img {
   line-height: normal;
   padding: 0 6px;
   border-radius: 4px;
-  color: #fff;
+  color: #644956;
 }
 
 .company-list-btn a.jobguru-btn {
   background: transparent none repeat scroll 0 0;
-  color: #fff;
-  border: 3px solid #fff;
+  color: #644956;
+  border: 3px solid #644956;
 }
 
 .jobguru-btn {
